@@ -4,7 +4,7 @@
 ; (batch c:/temp/cpsc583proj1/family_facts.clp)
 ; (run 1)
 ; or
-; (run)
+; (run) a test
 
 ; Facts
 (assert 
