@@ -1,0 +1,48 @@
+;for job, a is student, b is technician , c is ...
+(deftemplate customer
+	(slot name (type STRING))
+	(slot age (type NUMBER)(default 16))
+	(slot income (type NUMBER))
+	(slot job (type STRING)(default a))
+)
+
+;I set the selection type for STRING like a, b ,c, d
+;because it is easier to maintain the date
+(deftemplate customerSelection
+	(slot model(type NUMBER))
+	(slot price(type NUMBER)(default 0))
+	(slot select01(type STRING))
+	(slot select02(type STRING))
+	(slot select03(type STRING))
+	(slot select04(type STRING))
+)
+
+;I plan to set up car characters
+;so once , the new model is added up in sale line
+;my system can also update the car information at the same time
+(deftemplate carsCharacter
+	(slot Q1)
+	(slot Q2)
+	(slot Q3)
+	(slot Q4)
+
+
+
+;Mutiple choice
+;create a function
+;Sample:
+"Q2"
+;"How much spaces does you family need?"
+;a
+;going to the office
+;b
+;going to school
+;QUESTION: How to add new option like option3, option4 and option5
+(deftemplate mutipleChoice
+	(slot numQuest(type STRING))
+	(slot quest(type STRING))
+	(slot numOpt1(type STRING))
+	(slot option1(type STRING))
+	(slot numOpt2(type STRING))
+	(slot option2(type STRING))
+)
