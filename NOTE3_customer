@@ -37,7 +37,7 @@
 ;going to the office
 ;b
 ;going to school
-;QUESTION: How to add new option like option3, option4 and option5 in this template
+;----QUESTION: How to add new option like option3, option4 and option5 in this template----
 (deftemplate mutipleChoice
 	(slot numQuest(type STRING))
 	(slot quest(type STRING))
