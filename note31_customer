@@ -1,0 +1,52 @@
+(batch Users/kenh/Documents/583/project03/cpsc583proj1/version03/customer/main31.clp)
+
+
+(deftemplate customer
+	(slot name (type STRING))
+	(slot age (type NUMBER)(default 16))
+	(slot income (type NUMBER))
+	(slot job (type STRING)(default "a"))
+)
+
+(deftemplate answers
+	(slot answer(type STRING)(default "a"))
+)
+
+
+(deffunction listJobs()
+	(printout t "a Technican"crlf)
+	(printout t "b manager" crlf)
+	(printout t "c accountant" crlf)
+)
+
+(defrule welcome
+=>
+	(printout t " "crlf)
+	(printout t "welcome to Toyota Match" crlf)
+	(printout t " " crlf)
+	(printout t "Ready? (y/n)"crlf)
+	(printout t ">> ")
+	(bind ?w (read))
+	(assert (welcome ?w))
+)
+
+
+(defrule storeCustomerInfor
+(welcome ?w)
+=>
+	(printout t " "crlf)
+	(printout t "What is your name ")
+	(bind ?custN (read))
+	(assert (name ?custN))
+	(printout t " " crlf)
+	(printout t "How old are you? ")
+	(bind ?custAge (read))
+	(assert (age ?custAge))
+	(printout t " " crlf)
+	(printout t "What is your income? ")
+	(bind ?custInc(read))
+	(assert (income ?custInc))
+	(printout t "" crlf)
+	(printout t "what is your job ? " )
+
+)
