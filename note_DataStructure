@@ -1,0 +1,24 @@
+;create question
+(deftemplate question
+	(slot No (type NUMBER)(default 0))
+	(slot Side (type STRING)(default "UNKNOWN"))
+	(slot Content (type STRING)(default "UNKNOWN"))
+)
+
+;create question choice
+(deftemplate questChoice
+	(slot No (type NUMBER)(default 0))
+	(slot Side (type STRING)(default "UNKNOWN"))
+	(slot Choice (type STRING)(default "UNKNOWN"))
+	(slot Content (type STRING)(default "UNKNOWN"))
+)
+
+;create featureOfCar
+(deftemplate car
+	(slot year(type NUMBER)(default 2020))
+	(slot Cname(type STRING)(default "UNKNOWN"))
+	(slot feature01(type STRING)(default "UNKNOWN"))
+	(slot feature02(type STRING)(default "UNKNOWN"))
+	(slot feature03(type STRING)(default "UNKNOWN"))
+	(slot feature04(type STRING)(default "UNKNOWN"))
+)

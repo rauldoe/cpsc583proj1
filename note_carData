@@ -1,0 +1,64 @@
+;Q4LLL-a
+(assert (car(year 2020)(Cname "4Runner")(feature01 "Off to work")(feature02 "commuting to work")(feature03 "going to the office")(feature04 "bing comfortable") ))
+(assert (car(year 2020)(Cname "Avalon")(feature01 "Off to work")(feature02 "commuting to work")(feature03 "going to the office")(feature04 "bing comfortable") ))
+(assert (car(year 2020)(Cname "Camry")(feature01 "Off to work")(feature02 "commuting to work")(feature03 "going to the office")(feature04 "bing comfortable") ))
+
+;Q4LLL-b
+(assert (car(year 2020)(Cname "Prius")(feature01 "Off to work")(feature02 "commuting to work")(feature03 "going to the office")(feature04 "bing efficient") ))
+(assert (car(year 2020)(Cname "Prius Prime")(feature01 "Off to work")(feature02 "commuting to work")(feature03 "going to the office")(feature04 "bing efficient") ))
+
+;Q4LLR-a
+(assert (car(year 2020)(Cname "Corolla")(feature01 "Off to work")(feature02 "commuting to work")(feature03 "going to school")(feature04 "stylish") ))
+(assert (car(year 2020)(Cname "Yaris")(feature01 "Off to work")(feature02 "commuting to work")(feature03 "going to school")(feature04 "stylish") ))
+
+;Q4LLR-b
+(assert (car(year 2020)(Cname "Camry")(feature01 "Off to work")(feature02 "commuting to work")(feature03 "going to school")(feature04 "creative") ))
+
+;Q3LR
+(assert (car(year 2020)(Cname "Sequoia")(feature01 "Off to work")(feature02 "getting work done")(feature03 "get power")(feature04 "UNKNOWN") ))
+(assert (car(year 2020)(Cname "Tacoma")(feature01 "Off to work")(feature02 "getting work done")(feature03 "get power")(feature04 "UNKNOWN") ))
+(assert (car(year 2020)(Cname "Tundra")(feature01 "Off to work")(feature02 "getting work done")(feature03 "get power")(feature04 "UNKNOWN") ))
+
+;Q4LRR-a
+(assert (car(year 2020)(Cname "4Runner")(feature01 "Off to work")(feature02 "getting work done")(feature03 "great towing")(feature04 "versaility") ))
+(assert (car(year 2020)(Cname "Highlander")(feature01 "Off to work")(feature02 "getting work done")(feature03 "great towing")(feature04 "versaility") ))
+(assert (car(year 2020)(Cname "Tundra")(feature01 "Off to work")(feature02 "getting work done")(feature03 "great towing")(feature04 "versaility") ))
+
+;Q4LRR-b
+(assert (car(year 2020)(Cname "Land Cruiser")(feature01 "Off to work")(feature02 "getting work done")(feature03 "great towing")(feature04 "space") ))
+(assert (car(year 2020)(Cname "Sequoia")(feature01 "Off to work")(feature02 "getting work done")(feature03 "great towing")(feature04 "space") ))
+(assert (car(year 2020)(Cname "Tundra")(feature01 "Off to work")(feature02 "getting work done")(feature03 "great towing")(feature04 "space") ))
+
+;Q4RLL-a
+(assert (car(year 2020)(Cname "Camry")(feature01 "Out with family")(feature02 "We need a little")(feature03 "We pack light")(feature04 "stay near home") ))
+(assert (car(year 2020)(Cname "Corolla")(feature01 "Out with family")(feature02 "We need a little")(feature03 "We pack light")(feature04 "stay near home") ))
+
+;Q4RLL-b
+(assert (car(year 2020)(Cname "Prius")(feature01 "Out with family")(feature02 "We need a little")(feature03 "We pack light")(feature04 "go far away") ))
+(assert (car(year 2020)(Cname "Camry Hybrid")(feature01 "Out with family")(feature02 "We need a little")(feature03 "We pack light")(feature04 "go far away") ))
+(assert (car(year 2020)(Cname "RAV4 Hybrid")(feature01 "Out with family")(feature02 "We need a little")(feature03 "We pack light")(feature04 "go far away") ))
+
+;Q3RL-b
+(assert (car(year 2020)(Cname "Highlander")(feature01 "Out with family")(feature02 "We need a little")(feature03 "We pack heavy")(feature04 "UNKNOWN") ))
+(assert (car(year 2020)(Cname "Sienna")(feature01 "Out with family")(feature02 "We need a little")(feature03 "We pack heavy")(feature04 "UNKNOWN") ))
+(assert (car(year 2020)(Cname "Avalon Hybrid")(feature01 "Out with family")(feature02 "We need a little")(feature03 "We pack heavy")(feature04 "UNKNOWN") ))
+
+;Q4RRL-a
+(assert (car(year 2020)(Cname "Camry")(feature01 "Out with family")(feature02 "We need a lot")(feature03 "We like flexibility")(feature04 "stay near home") ))
+(assert (car(year 2020)(Cname "Sienna")(feature01 "Out with family")(feature02 "We need a lot")(feature03 "We like flexibility")(feature04 "stay near home") ))
+(assert (car(year 2020)(Cname "RAV4 Hybrid")(feature01 "Out with family")(feature02 "We need a lot")(feature03 "We like flexibility")(feature04 "stay near home") ))
+
+;Q4RRL-b
+(assert (car(year 2020)(Cname "Highlander")(feature01 "Out with family")(feature02 "We need a lot")(feature03 "We like flexibility")(feature04 "go far away") ))
+(assert (car(year 2020)(Cname "Sequoia")(feature01 "Out with family")(feature02 "We need a lot")(feature03 "We like flexibility")(feature04 "go far away") ))
+(assert (car(year 2020)(Cname "Sienna")(feature01 "Out with family")(feature02 "We need a lot")(feature03 "We like flexibility")(feature04 "go far away") ))
+
+;Q4RRR-a
+(assert (car(year 2020)(Cname "4Runner")(feature01 "Out with family")(feature02 "We need a lot")(feature03 "We want luxury")(feature04 "Rugged") ))
+(assert (car(year 2020)(Cname "Land Cruiser")(feature01 "Out with family")(feature02 "We need a lot")(feature03 "We want luxury")(feature04 "Rugged") ))
+(assert (car(year 2020)(Cname "Tundra")(feature01 "Out with family")(feature02 "We need a lot")(feature03 "We want luxury")(feature04 "Rugged") ))
+
+;Q4RRR-b
+(assert (car(year 2020)(Cname "Highlander")(feature01 "Out with family")(feature02 "We need a lot")(feature03 "We want luxury")(feature04 "Refined") ))
+(assert (car(year 2020)(Cname "Sequoia")(feature01 "Out with family")(feature02 "We need a lot")(feature03 "We want luxury")(feature04 "Refined") ))
+(assert (car(year 2020)(Cname "Sienna")(feature01 "Out with family")(feature02 "We need a lot")(feature03 "We want luxury")(feature04 "Refined") ))

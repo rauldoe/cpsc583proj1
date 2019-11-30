@@ -1,0 +1,51 @@
+;Q1
+(assert (questChoice(No 1)(Side "UNKNOWN")(Choice "a")(Content "Off to work")))
+(assert (questChoice(No 1)(Side "UNKNOWN")(Choice "b")(Content "Out with family")))
+
+;Q2L
+(assert (questChoice(No 2)(Side "L")(Choice "a")(Content "commuting to work")))
+(assert (questChoice(No 2)(Side "L")(Choice "b")(Content "getting work done")))
+
+;Q3LL
+(assert (questChoice(No 3)(Side "LL")(Choice "a")(Content "going to the office")))
+(assert (questChoice(No 3)(Side "LL")(Choice "b")(Content "going to school")))
+
+;Q4LLL
+(assert (questChoice(No 4)(Side "LLL")(Choice "a")(Content "bing comfortable")))
+(assert (questChoice(No 4)(Side "LLL")(Choice "b")(Content "bing efficient")))
+
+;Q4LLR
+(assert (questChoice(No 4)(Side "LLR")(Choice "a")(Content "stylish")))
+(assert (questChoice(No 4)(Side "LLR")(Choice "b")(Content "creative")))
+
+;Q3LR
+(assert (questChoice(No 3)(Side "LR")(Choice "a")(Content "get power")))
+(assert (questChoice(No 3)(Side "LR")(Choice "b")(Content "great towing")))
+
+;Q4LRR
+(assert (questChoice(No 4)(Side "LRR")(Choice "a")(Content "versaility")))
+(assert (questChoice(No 4)(Side "LRR")(Choice "b")(Content "space")))
+
+;Q2R
+(assert (questChoice(No 2)(Side "R")(Choice "a")(Content "We need a little")))
+(assert (questChoice(No 2)(Side "R")(Choice "b")(Content "We need a lot")))
+
+;Q3RL
+(assert (questChoice(No 3)(Side "RL")(Choice "a")(Content "We pack light")))
+(assert (questChoice(No 3)(Side "RL")(Choice "b")(Content "We pack heavy")))
+
+;Q4RLL
+(assert (questChoice(No 4)(Side "RLL")(Choice "a")(Content "stay near home")))
+(assert (questChoice(No 4)(Side "RLL")(Choice "b")(Content "go far away")))
+
+;Q3RR
+(assert (questChoice(No 3)(Side "RR")(Choice "a")(Content "We like flexibility")))
+(assert (questChoice(No 3)(Side "RR")(Choice "b")(Content "We want luxury")))
+
+;Q4RRL
+(assert (questChoice(No 4)(Side "RRL")(Choice "a")(Content "stay near home")))
+(assert (questChoice(No 4)(Side "RRL")(Choice "b")(Content "go far away")))
+
+;Q4RRR
+(assert (questChoice(No 4)(Side "RRR")(Choice "a")(Content "Rugged")))
+(assert (questChoice(No 4)(Side "RRR")(Choice "b")(Content "Refined")))

@@ -1,0 +1,18 @@
+;LEFT
+(assert (question (No 1)(Side "UNKNOWN")(Content "Where are you headed?")))
+(assert (question (No 2)(Side "L")(Content "I plan to use my vehicle.")))
+(assert (question (No 3)(Side "LL")(Content "Are you headed to work or school?")))
+(assert (question (No 4)(Side "LLL")(Content "What's most important to you?")))
+(assert (question (No 4)(Side "LLR")(Content "How do you want to appear?")))
+;(   No (question (No 4)(Side "LRL")(Content "              No          ")))
+(assert (question (No 3)(Side "LR")(Content "What do you need most for work?")))
+(assert (question (No 4)(Side "LRR")(Content "What do you need?")))
+
+;RIGHT
+(assert (question (No 2)(Side "R")(Content "How much spaces does you family need?")))
+(assert (question (No 3)(Side "RL")(Content "How do you pack for tip?")))
+(assert (question (No 4)(Side "RLL")(Content "How far do you travel?")))
+;(   No (question (No 4)(Side "RLR")(Content "         No           ")))
+(assert (question (No 3)(Side "RR")(Content "What do you value most?")))
+(assert (question (No 4)(Side "RRL")(Content "How far do you travel?")))
+(assert (question (No 4)(Side "RRR")(Content "What type of luxury do you prefer?")))
