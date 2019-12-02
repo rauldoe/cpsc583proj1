@@ -22,20 +22,20 @@
      (slot Content4 (type STRING)(default "UNKNOWN"))
  )
  
- (assert (pQuestion (No "A")(Content "What is your name?")))
- (assert (pQuestion (No "B")(Content "Budget?")))
- (assert (pQuestion (No "C")(Content "What is your marital status?")))
- (assert (pQuestion (No "D")(Content "Do you have a house?")))
+ (deffacts personalQuestion
+ (pQuestion (No "A")(Content "What is your name?"))
+ (pQuestion (No "B")(Content "Budget?"))
+ (pQuestion (No "C")(Content "What is your marital status?"))
+ (pQuestion (No "D")(Content "Do you have a house?"))
+ )
 
  
- (assert (qChoice(No "c")(Choice1 "a")(Content1 "Married")(Choice2 "b")(Content2 "Single")(Choice3 "c")(Content3 "Divorced")(Choice4 "d")(Content4 "Window")))
+ (assert (qChoice(No "C")(Choice1 "a")(Content1 "Married")(Choice2 "b")(Content2 "Single")(Choice3 "c")(Content3 "Divorced")(Choice4 "d")(Content4 "Window")))
 
  
  
 (defrule starter
-	?init <-(initial-fact)
-=>
-	(retract ?init)
+	=>
 	(printout t " " crlf)
 	(printout t " " crlf)
 	(printout t " " crlf)
@@ -61,14 +61,6 @@
 	(printout t " " crlf)
 	(printout t " " crlf)
 	(printout t " " crlf)
-	(bind ?answer(readline))
-	(assert (screen 2))
-)
-	
-(defrule first-screen
-	?scan <-(screen 2)
-=>
-	(retract ?scan)
 )
 
 (defrule welcome
@@ -99,63 +91,70 @@
 	(printout t " " crlf)
 	(printout t " " crlf)
 	(printout t " " crlf)
-	(assert (screen 3))
-)
-
-(defrule first-screen
-	?scan <-(screen 3)
-=>
-	(retract ?scan)
 )
 
 (defrule storeCustomerInfor
-	(welcome ?w&y|Y|yes|Yes|YES|ya|YA)
+	?scan <- (welcome ?w&y|Y|yes|Yes|YES|ya|YA)
 =>
-	(defrule questionA
-		(pQuestion (No ?no)(Content ?content1))
-	=>
-		(printout t ?no " " ?content1 crlf)
-	)
+	(retract ?scan)
+    (assert (No "A"))
+)
+
+(defrule questionA
+    (and (No "A")
+	(pQuestion (No ?no)(Content ?content1)))
+    
+=>
+	(printout t ?no " " ?content1 crlf))
 	(bind ?cName (read))
+	(assert (name ?cName))
 	(printout t " " crlf)
-	(defrule questionB
-		(pQuestion (No ?no)(Content ?content2))
-	=>
-		(printout t ?no " " ?content2 crlf)
-	)
+    (assert (No "B"))
+)
+	
+(defrule questionB
+	(No "B")
+	(pQuestion (No ?no)(Content ?content2))
+=>
+	(printout t ?no " " ?content2 crlf))
 	(bind ?cBudget (read))
+	(assert (budget ?cBudget))
 	(printout t " " crlf)
-    (defrule questionC
-            (qChoice (No ?no)(Choice1 ?chc1)(Content1 ?cont1)(Choice2 ?chc2)(Content2 ?cont2)(Choice3 ?chc3)(Content3 ?cont3)(Choice4 ?chc4)(Content4 ?cont4))
-            (pQuestion (No ?no)(Content ?content3))
-        =>
-            (printout t ?no " " ?content3 crlf)
-            (printout t ?chc1 " " ?cont1 crlf)
-            (printout t ?chc2 " " ?cont2 crlf)
-            (printout t ?chc3 " " ?cont3 crlf)
-            (printout t ?chc4 " " ?cont4 crlf)
-    )
+	(assert (No "C"))
+)
+
+(defrule questionC
+	(No "C")
+     (qChoice (No ?no)(Choice1 ?chc1)(Content1 ?cont1)(Choice2 ?chc2)(Content2 ?cont2)(Choice3 ?chc3)(Content3 ?cont3)(Choice4 ?chc4)(Content4 ?cont4))
+     (pQuestion (No ?no)(Content ?content3))
+=>
+     (printout t ?no " " ?content3 crlf)
+     (printout t ?chc1 " " ?cont1 crlf)
+     (printout t ?chc2 " " ?cont2 crlf)
+     (printout t ?chc3 " " ?cont3 crlf)
+     (printout t ?chc4 " " ?cont4 crlf)       
 	(printout t ">> ")
 	(bind ?cMarriage(read))
+	(assert (maritalStatus ?cMarriage))
 	(printout t "" crlf)
-	(defrule questionD
-		(pQuestion (No ?no)(Content ?content4))
+	(assert (No "D"))
+)
+
+(defrule questionD
+	(No "D")
+	(pQuestion (No ?no)(Content ?content4))
 	=>
-		(printout t ?no " " ?content4 crlf)
-	)
+	(printout t ?no " " ?content4 crlf))
 	(printout t "a Yes I own a property" crlf)
 	(printout t "b No I dont a property" crlf)
 	(printout t ">> ")
 	(bind ?cHouseOwn(read))
-	(printout t " " crlf)
-	(assert (name ?cName))
-	(assert (budget ?cBudget))
-	(assert (maritalStatus ?cMarriage))
 	(assert (homeOwnership ?cHouseOwn))
-	(assert (screen 4))
+	(printout t " " crlf)
 )
 
-(defrule w-n
+
+(defrule w-n "end the game"
 	(welcome ?w&n|N|no|No|NO|nope|bye|Bye)
 =>
 	(printout t " "crlf)
