@@ -70,9 +70,34 @@
 	(likeLuxury yes)
    =>
    (assert (likeRuggedCar (yesOrNo "Do you like rugged car? (yes/no) ")))
+)
+
+
+(defrule buyGuideRuggedCar
+	(name ?name)
+   (ownHouse yes)
+	(married yes)
+	(likeLuxury yes)
+	(likeRuggedCar yes)
+	(name ?name)
+   =>
+	(printout t ?name " we recoomended" crlf)
    (printout t "2020 Highlander" crlf)
    (printout t "2020 Sequoia" crlf)
    (printout t "2020 Sienna" crlf)
+)
+
+(defrule buyGuideRefinedCar
+	(name ?name)
+   (ownHouse yes)
+	(married yes)
+	(likeLuxury yes)
+	(likeRuggedCar no)
+   =>
+	(printout t ?name " we recoomended" crlf)
+   (printout t "2020 4Runner" crlf)
+   (printout t "2020 Land Cruiser" crlf)
+   (printout t "2020 Tundra" crlf)
 )
   
    
