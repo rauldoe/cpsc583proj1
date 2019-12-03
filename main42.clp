@@ -213,6 +213,135 @@
    (printout t "2020 Corolla" crlf)
 )
 
+(defrule useOwnCarForWork
+   (forWork yes)
+   =>
+   (assert (useOwnCarForWork (yesOrNo "Do you use your own car for work? (yes/no)? "))))
+
+(defrule headToSchool
+   (forWork yes)
+    (useOwnCarForWork no)
+   =>
+   (assert (headToSchool (yesOrNo "Are you headed to school? (yes/no)? "))))
+
+(defrule mostImportantIs
+   (forWork yes)
+    (useOwnCarForWork no)
+	(headToSchool no)
+   =>
+   (assert (mostImportantIs (askQuestion "What is most important to you ? comfortable or efficient > "comfortable efficient))))
+      
+(defrule buyGuideLikeComfortable
+	(name ?name)
+   (forWork yes)
+    (useOwnCarForWork no)
+	(headToSchool no)
+	(mostImportantIs comfortable)
+   =>
+   (printout t ?name " we recoomended" crlf)
+   (printout t "2020 4Runner" crlf)
+   (printout t "2020 Avalon" crlf)
+   (printout t "2020 Camry" crlf)
+)
+
+(defrule buyGuideLikeEfficient
+	(name ?name)
+   (forWork yes)
+    (useOwnCarForWork no)
+	(headToSchool no)
+	(mostImportantIs efficient)
+   =>
+   (printout t ?name " we recoomended" crlf)
+   (printout t "2020 Prius" crlf)
+   (printout t "2020 Prius Prime" crlf)
+)
+
+
+(defrule style
+   (forWork yes)
+    (useOwnCarForWork no)
+	(headToSchool yes)
+   =>
+   (assert (style (askQuestion "How do you want to appear? stylish or creative > "stylish creative))))   
+   
+   (defrule buyGuideLikeStylish
+	(name ?name)
+   (forWork yes)
+    (useOwnCarForWork no)
+	(headToSchool yes)
+	(style stylish)
+   =>
+   (printout t ?name " we recoomended" crlf)
+   (printout t "2020 Corolla" crlf)
+   (printout t "2020 Yaris" crlf)
+)
+
+(defrule buyGuideLikeCreative
+	(name ?name)
+   (forWork yes)
+    (useOwnCarForWork no)
+	(headToSchool yes)
+	(style creative)
+   =>
+   (printout t ?name " we recoomended" crlf)
+   (printout t "2020 Camry" crlf)
+)
+
+(defrule needTowing
+   (forWork yes)
+    (useOwnCarForWork yes)
+   =>
+   (assert (needTowing (yesOrNo "Do you need great towing for next vehicle ? (yes/no)? "))))
+   
+(defrule need
+   (forWork yes)
+    (useOwnCarForWork yes)
+	(needTowing yes)
+   =>
+   (assert (need (askQuestion "what do you need? versatility or space? > "versatility space))))
+   
+    
+(defrule buyGuideNeedVersatility
+	(name ?name)
+   (forWork yes)
+    (useOwnCarForWork yes)
+	(needTowing yes)
+	(need versatility)
+   =>
+   (printout t ?name " we recoomended" crlf)
+   (printout t "2020 4Runner" crlf)
+	(printout t "2020 Highlander" crlf)
+	(printout t "2020 Tundra" crlf)
+)
+
+(defrule buyGuideNeedSpace
+	(name ?name)
+   (forWork yes)
+    (useOwnCarForWork yes)
+	(needTowing yes)
+	(need space)
+   =>
+   (printout t ?name " we recoomended" crlf)
+   (printout t "2020 Land Cruiser" crlf)
+	(printout t "2020 Sequoia" crlf)
+	(printout t "2020 Tundra" crlf)
+)
+
+(defrule needPower
+	(name ?name)
+   (forWork yes)
+    (useOwnCarForWork yes)
+    (needTowing no)
+   =>
+ (printout t ?name " we recoomended" crlf)
+   (printout t "2020 Sequoia" crlf)
+	(printout t "2020 Tacoma" crlf)
+	(printout t "2020 Tundra" crlf)
+)
+
+   
+   
+      
   
    
  
