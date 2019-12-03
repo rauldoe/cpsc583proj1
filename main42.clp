@@ -48,38 +48,64 @@
  	(printout t "have a nice day" crlf)
 )
 
-(defrule ownHouse
+(defrule forWork
    (name ?name)
    =>
-   (assert (ownHouse (yesOrNo "Do you have a house? (yes/no)? "))))
-
+   (assert (forWork (yesOrNo "Do you drive to work everyday? (yes/no)? "))))
+   
 (defrule married
-   (ownHouse yes)
+   (forWork no)
    =>
-   (assert (married (yesOrNo "Are you married? (yes/no)? "))))   
+   (assert (married (yesOrNo "Are you married? (yes/no)? "))))
+
+(defrule needMoreSpace
+   (forWork no)
+	(married yes)
+   =>
+   (assert (needMoreSpace (yesOrNo "Do you need more spaces (yes/no)? "))))
+   
+(defrule ownHouse
+   (forWork no)
+	(married yes)
+	(needMoreSpace yes)
+   =>
+   (assert (ownHouse (yesOrNo "Do you have a house? (yes/no)? "))))   
 
 (defrule likeLuxury
-   (ownHouse yes)
+   (forWork no)
 	(married yes)
+	(needMoreSpace yes)
+	(ownHouse yes)
    =>
    (assert (likeLuxury (yesOrNo "Do you like Luxury car? (yes/no) "))))
    
 (defrule likeRuggedCar
-   (ownHouse yes)
+   (forWork no)
 	(married yes)
+	(needMoreSpace yes)
+	(ownHouse yes)
 	(likeLuxury yes)
    =>
    (assert (likeRuggedCar (yesOrNo "Do you like rugged car? (yes/no) ")))
 )
 
-
+(defrule likeTravel
+   (forWork no)
+	(married yes)
+	(needMoreSpace yes)
+	(ownHouse yes)
+	(likeLuxury no)
+   =>
+   (assert (likeTravel (yesOrNo "Do you like travel? (yes/no) "))))
+   
 (defrule buyGuideRuggedCar
 	(name ?name)
-   (ownHouse yes)
+     (forWork no)
 	(married yes)
+	(needMoreSpace yes)
+	(ownHouse yes)
 	(likeLuxury yes)
 	(likeRuggedCar yes)
-	(name ?name)
    =>
 	(printout t ?name " we recoomended" crlf)
    (printout t "2020 Highlander" crlf)
@@ -88,17 +114,105 @@
 )
 
 (defrule buyGuideRefinedCar
-	(name ?name)
-   (ownHouse yes)
+(name ?name)
+     (forWork no)
 	(married yes)
+	(needMoreSpace yes)
+	(ownHouse yes)
 	(likeLuxury yes)
 	(likeRuggedCar no)
-   =>
+=>
 	(printout t ?name " we recoomended" crlf)
    (printout t "2020 4Runner" crlf)
    (printout t "2020 Land Cruiser" crlf)
    (printout t "2020 Tundra" crlf)
 )
+
+(defrule buyGuideGoFarAway
+	(name ?name)
+   (forWork no)
+	(married yes)
+	(needMoreSpace yes)
+	(ownHouse yes)
+	(likeLuxury no)
+	(likeTravel yes)
+   =>
+   	(printout t ?name " we recoomended" crlf)
+   (printout t "2019 Highlander" crlf)
+   (printout t "2020 Sequoia" crlf)
+   (printout t "2020 Sienna" crlf)
+)
+
+(defrule buyGuideStayNearHome
+	(name ?name)
+   (forWork no)
+	(married yes)
+	(needMoreSpace yes)
+	(ownHouse yes)
+	(likeLuxury no)
+	(likeTravel no)
+   =>
+   	(printout t ?name " we recoomended" crlf)
+   (printout t "2020 Camry" crlf)
+   (printout t "2020 Sienna" crlf)
+   (printout t "2020 RAV4 Hybrid" crlf)
+)
+
+(defrule likeToPackLight
+   (forWork no)
+	(married yes)
+	(needMoreSpace no)
+   =>
+   (assert (likeToPackLight (yesOrNo "Do you like to pack light for trips? (yes/no)? "))))
+   
+(defrule likeToPackHeavy
+	(name ?name)
+   (forWork no)
+	(married yes)
+	(needMoreSpace no)
+	(likeToPackLight no)
+   =>
+   (printout t ?name " we recoomended" crlf)
+   (printout t "2020 Highlander" crlf)
+   (printout t "2020 Sienna" crlf)
+   (printout t "2020 Avalon Hybrid" crlf)
+)
+   
+(defrule likeLongDistanceTravel
+   (forWork no)
+	(married yes)
+	(needMoreSpace no)
+	(likeToPackLight yes)
+   =>
+   (assert (likeLongDistanceTravel (yesOrNo "Do you like to drive far away? (yes/no)? "))))
+   
+ (defrule buyGuideForLongDistanceTravel
+	(name ?name)
+   (forWork no)
+	(married yes)
+	(needMoreSpace no)
+	(likeToPackLight yes)
+	(likeLongDistanceTravel yes)
+   =>
+      	(printout t ?name " we recoomended" crlf)
+   (printout t "2020 Prius" crlf)
+   (printout t "2020 Camry Hybrid" crlf)
+   (printout t "2020 RAV4 Hybrid" crlf)
+)
+
+(defrule buyGuideForStayNearHome
+	(name ?name)
+   (forWork no)
+	(married yes)
+	(needMoreSpace no)
+	(likeToPackLight yes)
+	(likeLongDistanceTravel no)
+   =>
+      	(printout t ?name " we recoomended" crlf)
+   (printout t "2020 Camry" crlf)
+   (printout t "2020 Corolla" crlf)
+)
+
   
    
  
