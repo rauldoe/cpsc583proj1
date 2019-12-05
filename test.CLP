@@ -45,31 +45,45 @@
 	(get-info-animal)
 	(modify ?state (current state-info-animal))
 	(printout t "type " (type ?state) crlf)
+
+
 )
 
 
-https://stackoverflow.com/questions/27468440/how-to-get-information-from-the-fact-in-clips
-https://stackoverflow.com/questions/32770082/how-do-i-retrieve-fact-index-in-clips-in-a-deffunction
-(deftemplate text-for-id
-   (slot id)
-   (slot text))
+; https://stackoverflow.com/questions/27468440/how-to-get-information-from-the-fact-in-clips
+; https://stackoverflow.com/questions/32770082/how-do-i-retrieve-fact-index-in-clips-in-a-deffunction
+; (deftemplate text-for-id
+;    (slot id)
+;    (slot text))
    
-(deffacts text-for-id
-(text-for-id 
-   (id AnimalDemo)
-   (text "Animal Demo"))
-)
+; (deffacts text-for-id
+; (text-for-id 
+;    (id AnimalDemo)
+;    (text "Animal Demo"))
+; )
 
-   (bind ?fact
-      (find-fact ((?f text-for-id))
-                  (eq ?f:id ?id)))
+;    (bind ?fact
+;       (find-fact ((?f text-for-id))
+;                   (eq ?f:id ?id)))
 
-(bind ?ani
-  (find-fact ((?a animal))
-			  (eq ?a:name zebra)))
-(bind ?al (find-all-facts ((?f animal)) (eq ?f:name zebra)))
+; (bind ?ani
+;   (find-fact ((?a animal))
+; 			  (eq ?a:name zebra)))
+; (bind ?al (find-all-facts ((?f animal)) (eq ?f:name zebra)))
 
-(deffunction up ()
-   (do-for-fact ((?fact u)) TRUE
-      (retract ?fact))
-   (assert (u green)))
+; (deffunction up ()
+;    (do-for-fact ((?fact u)) TRUE
+;       (retract ?fact))
+;    (assert (u green)))
+
+; (do-for-fact ((?fact animal)) (eq ?fact:name tiger)
+;    (modify ?fact (type awesome))
+;    (printout t "good things" crlf)
+;    (type ?fact)
+;    (bind ?bg ?fact)
+; )
+
+; (deffunction myprint ($?rest1)
+;    (foreach ?r $?rest1
+;       (printout t ?r crlf)))
+; (myprint (create$ a b) (create$ c d))

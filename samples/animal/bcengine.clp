@@ -28,7 +28,7 @@
 
 (deffacts MAIN::Configuration
    (validate no)
-   (target gui)) ; console, clipsjni, gui, or cgi
+   (target console)) ; console, clipsjni, gui, or cgi
    
 ;;;*************************
 ;;;* DEFGLOBAL DEFINITIONS *
