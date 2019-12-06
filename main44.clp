@@ -15,7 +15,18 @@
    (if (or (eq ?response yes) (eq ?response y))
        then yes 
        else no))
-       
+ 
+ ;(deffunction askTXTQuestion (?question ?ans1 ?ans2 $?allowed-values)
+   ;(printout t ?question)
+   ;(bind ?answer (read))
+   ;(if (lexemep ?answer) 
+   ;    then (bind ?answer (lowcase ?answer)))
+   ;(while (not (member ?answer ?allowed-values)) do
+    ;  (printout t ?question)
+    ;  (bind ?answer (read))
+    ;  (if (lexemep ?answer) 
+    ;     then (bind ?answer (lowcase ?answer))))
+   ;?answer)  
  
 
        
@@ -68,45 +79,54 @@
    (assert (married (yesOrNo ?question1))))
 
 (defrule needMoreSpace
+	(name ?name)
    (forWork no)
 	(married yes)
+	 (quest (no ?num1&mrSpace)(question ?question1))
    =>
-   (assert (needMoreSpace (yesOrNo "Do you need more spaces (yes/no)? "))))
+   (assert (needMoreSpace (yesOrNo ?question1))))
    
 (defrule ownHouse
+	(name ?name)
    (forWork no)
 	(married yes)
 	(needMoreSpace yes)
-	(quest (no ?num1&C)(question ?question1))
+	(quest (no ?num1&house)(question ?question1))
    =>
    (assert (ownHouse (yesOrNo ?question1))))   
 
 (defrule likeLuxury
+	(name ?name)
    (forWork no)
 	(married yes)
 	(needMoreSpace yes)
 	(ownHouse yes)
+	(quest (no ?num1&luxury)(question ?question1))
    =>
-   (assert (likeLuxury (yesOrNo "Do you like Luxury car? (yes/no) "))))
+   (assert (likeLuxury (yesOrNo ?question1))))
    
 (defrule likeRuggedCar
+	(name ?name)
    (forWork no)
 	(married yes)
 	(needMoreSpace yes)
 	(ownHouse yes)
 	(likeLuxury yes)
+	(quest (no ?num1&ruggedCar)(question ?question1))
    =>
-   (assert (likeRuggedCar (yesOrNo "Do you like rugged car? (yes/no) ")))
+   (assert (likeRuggedCar (yesOrNo ?question1)))
 )
 
 (defrule likeTravel
+	(name ?name)
    (forWork no)
 	(married yes)
 	(needMoreSpace yes)
 	(ownHouse yes)
 	(likeLuxury no)
+	(quest (no ?num1&travel)(question ?question1))
    =>
-   (assert (likeTravel (yesOrNo "Do you like travel? (yes/no) "))))
+   (assert (likeTravel (yesOrNo ?question1))))
    
 (defrule buyGuideRuggedCar
 	(name ?name)
@@ -124,7 +144,7 @@
 )
 
 (defrule buyGuideRefinedCar
-(name ?name)
+	(name ?name)
      (forWork no)
 	(married yes)
 	(needMoreSpace yes)
@@ -169,16 +189,18 @@
 )
 
 (defrule likeToPackLight
+	(name ?name)
    (forWork no)
 	(married yes)
 	(needMoreSpace no)
+	(quest (no ?num1&pkLight)(question ?question1))
    =>
-   (assert (likeToPackLight (yesOrNo "Do you like to pack light for trips? (yes/no)? "))))
+   (assert (likeToPackLight (yesOrNo ?question1))))
    
 (defrule likeToPackHeavy
 	(name ?name)
    (forWork no)
-	(married no)
+	(married yes)
 	(needMoreSpace no)
 	(likeToPackLight no)
    =>
@@ -189,22 +211,24 @@
 )
    
 (defrule likeLongDistanceTravel
+	(name ?name)
    (forWork no)
-	(married no)
+	(married yes)
 	(needMoreSpace no)
 	(likeToPackLight yes)
+	(quest (no ?num1&lgDistance)(question ?question1))
    =>
-   (assert (likeLongDistanceTravel (yesOrNo "Do you like to drive far away? (yes/no)? "))))
+   (assert (likeLongDistanceTravel (yesOrNo ?question1))))
    
  (defrule buyGuideForLongDistanceTravel
 	(name ?name)
    (forWork no)
-	(married no)
+	(married yes)
 	(needMoreSpace no)
 	(likeToPackLight yes)
 	(likeLongDistanceTravel yes)
    =>
-      	(printout t ?name " we recoomended" crlf)
+    (printout t ?name " we recoomended" crlf)
    (printout t "2020 Prius" crlf)
    (printout t "2020 Camry Hybrid" crlf)
    (printout t "2020 RAV4 Hybrid" crlf)
@@ -213,40 +237,46 @@
 (defrule buyGuideForStayNearHome
 	(name ?name)
    (forWork no)
-	(married no)
+	(married yes)
 	(needMoreSpace no)
 	(likeToPackLight yes)
 	(likeLongDistanceTravel no)
    =>
-      	(printout t ?name " we recoomended" crlf)
+   (printout t ?name " we recoomended" crlf)
    (printout t "2020 Camry" crlf)
    (printout t "2020 Corolla" crlf)
 )
 
 (defrule useOwnCarForWork
+	(name ?name)
    (forWork yes)
+   (quest (no ?num1&ownCar)(question ?question1))
    =>
-   (assert (useOwnCarForWork (yesOrNo "Do you use your own car for work? (yes/no)? "))))
+   (assert (useOwnCarForWork (yesOrNo ?question1))))
 
 (defrule headToSchool
+	(name ?name)
    (forWork yes)
     (useOwnCarForWork no)
+    (quest (no ?num1&school)(question ?question1))
    =>
-   (assert (headToSchool (yesOrNo "Are you headed to school? (yes/no)? "))))
+   (assert (headToSchool (yesOrNo ?question1))))
 
 (defrule mostImportantIs
+	(name ?name)
    (forWork yes)
     (useOwnCarForWork no)
 	(headToSchool no)
+	(quest (no ?num1&important)(question ?question1))
    =>
-   (assert (mostImportantIs (askQuestion "What is most important to you ? comfortable or efficient > "comfortable efficient))))
+    (assert (mostImportantIs (yesOrNo ?question1))))
       
 (defrule buyGuideLikeComfortable
 	(name ?name)
    (forWork yes)
     (useOwnCarForWork no)
 	(headToSchool no)
-	(mostImportantIs comfortable)
+	(mostImportantIs yes)
    =>
    (printout t ?name " we recoomended" crlf)
    (printout t "2020 4Runner" crlf)
@@ -259,7 +289,7 @@
    (forWork yes)
     (useOwnCarForWork no)
 	(headToSchool no)
-	(mostImportantIs efficient)
+	(mostImportantIs no)
    =>
    (printout t ?name " we recoomended" crlf)
    (printout t "2020 Prius" crlf)
@@ -268,18 +298,20 @@
 
 
 (defrule style
+	(name ?name)
    (forWork yes)
     (useOwnCarForWork no)
 	(headToSchool yes)
+	(quest (no ?num1&style)(question ?question1))
    =>
-   (assert (style (askQuestion "How do you want to appear? stylish or creative > "stylish creative))))   
+    (assert (style (yesOrNo ?question1))))   
    
    (defrule buyGuideLikeStylish
 	(name ?name)
    (forWork yes)
     (useOwnCarForWork no)
 	(headToSchool yes)
-	(style stylish)
+	(style yes)
    =>
    (printout t ?name " we recoomended" crlf)
    (printout t "2020 Corolla" crlf)
@@ -291,24 +323,28 @@
    (forWork yes)
     (useOwnCarForWork no)
 	(headToSchool yes)
-	(style creative)
+	(style no)
    =>
    (printout t ?name " we recoomended" crlf)
    (printout t "2020 Camry" crlf)
 )
 
 (defrule needTowing
+	(name ?name)
    (forWork yes)
     (useOwnCarForWork yes)
+    (quest (no ?num1&towing)(question ?question1))
    =>
-   (assert (needTowing (yesOrNo "Do you need great towing for next vehicle ? (yes/no)? "))))
+   (assert (needTowing (yesOrNo ?question1))))
    
 (defrule need
+	(name ?name)
    (forWork yes)
     (useOwnCarForWork yes)
 	(needTowing yes)
+	(quest (no ?num1&need)(question ?question1))
    =>
-   (assert (need (askQuestion "what do you need? versatility or space? > "versatility space))))
+   (assert (need (yesOrNo ?question1))))
    
     
 (defrule buyGuideNeedVersatility
@@ -316,7 +352,7 @@
    (forWork yes)
     (useOwnCarForWork yes)
 	(needTowing yes)
-	(need versatility)
+	(need yes)
    =>
    (printout t ?name " we recoomended" crlf)
    (printout t "2020 4Runner" crlf)
@@ -329,7 +365,7 @@
    (forWork yes)
     (useOwnCarForWork yes)
 	(needTowing yes)
-	(need space)
+	(need no)
    =>
    (printout t ?name " we recoomended" crlf)
    (printout t "2020 Land Cruiser" crlf)
