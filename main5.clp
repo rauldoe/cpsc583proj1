@@ -26,14 +26,13 @@
    
 )
 
+
 (defrule startGame
 	(not (ready ?))
 	(quest (no rdy)(question ?question1))	
 =>
 	(assert (ready (yesOrNo ?question1 )))
 )
-
-
 
 
 (defrule getName
@@ -49,7 +48,7 @@
    (quest (no bye)(question ?question1))	
    =>
  	(assert (bye (displayInfor ?question1)))
- 	(save-facts /Users/kenh/Documents/583/project03/cpsc583proj1/version05/facts.clp)
+ 	
 )
 
 (defrule forWork
@@ -99,17 +98,16 @@
     (forWork ?fw)
 	(needMoreSpace ?space)
 	(likeLuxury ?luxury)
-	(likeRuggedCar ?rugger)
-	;(car(year ?year1)(Cname ?Cname1)(forWork ?fw1)(needMoreSpace ?space1)(likeLuxury ?luxury1)(likeRuggedCar ?rugger1))
-	;(test (eq ?fw ?fw1))
-	;(test (eq ?space ?space1))
-	;(test (eq ?luxury ?luxury1))
-	;(test (eq ?rugger ?rugger1))
-	(likeRuggedCar no)
-	(car(year ?year1)(Cname ?Cname1)(likeRuggedCar no))
+	(likeRuggedCar ?rugger&no)
+	(car(year ?year1)(Cname ?Cname1)(forWork ?fw1)(needMoreSpace ?space1)(likeLuxury ?luxury1)(likeRuggedCar ?rugger1))
+	(test (eq ?fw ?fw1))
+	(test (eq ?space ?space1))
+	(test (eq ?luxury ?luxury1))
+	(test (eq ?rugger ?rugger1))
+	;(likeRuggedCar no)
+	;(car(year ?year1)(Cname ?Cname1)(likeRuggedCar no))
    =>
-	(printout t ?year1 " " ?Cname1 crlf)
-	(save-facts /Users/kenh/Documents/583/project03/cpsc583proj1/version05/facts.clp)
+	(printout t ?year1 " " ?Cname1 crlf) 
 )
 
 (defrule buyGuideRuggedCar
@@ -117,17 +115,16 @@
     (forWork ?fw)
 	(needMoreSpace ?space)
 	(likeLuxury ?luxury)
-	(likeRuggedCar ?rugger)
-	;(car(year ?year1)(Cname ?Cname1)(forWork ?fw1)(needMoreSpace ?space1)(likeLuxury ?luxury1)(likeRuggedCar ?rugger1))
-	;(test (eq ?fw ?fw1))
-	;(test (eq ?space ?space1))
-	;(test (eq ?luxury ?luxury1))
-	;(test (eq ?rugger ?rugger1))
-	(likeRuggedCar yes)
-	(car(year ?year1)(Cname ?Cname1)(likeRuggedCar yes))
+	(likeRuggedCar ?rugger&yes)
+	(car(year ?year1)(Cname ?Cname1)(forWork ?fw1)(needMoreSpace ?space1)(likeLuxury ?luxury1)(likeRuggedCar ?rugger1))
+	(test (eq ?fw ?fw1))
+	(test (eq ?space ?space1))
+	(test (eq ?luxury ?luxury1))
+	(test (eq ?rugger ?rugger1))
+	;(likeRuggedCar yes)
+	;(car(year ?year1)(Cname ?Cname1)(likeRuggedCar yes))
    =>
-	(printout t ?year1 " " ?Cname1 crlf)
-	(save-facts /Users/kenh/Documents/583/project03/cpsc583proj1/version05/facts.clp)
+	(printout t ?year1 " " ?Cname1 crlf)	
 )
 
 (defrule buyGuideGoFarAway
@@ -135,11 +132,16 @@
    (forWork ?fw)
 	(needMoreSpace ?space)
 	(likeLuxury ?luxury)
-	(likeTravel yes)
-	(car(year ?year1)(Cname ?Cname1)(likeTravel yes))
+	(likeTravel ?travel&yes)
+	(car(year ?year1)(Cname ?Cname1)(forWork ?fw1)(needMoreSpace ?space1)(likeLuxury ?luxury1)(likeTravel ?travel1))
+	(test (eq ?fw ?fw1))
+	(test (eq ?space ?space1))
+	(test (eq ?luxury ?luxury1))
+	(test (eq ?travel ?travel1))
+	;(likeTravel yes)
+	;(car(year ?year1)(Cname ?Cname1)(likeTravel yes))
    =>
 	(printout t ?year1 " " ?Cname1 crlf)
-	(save-facts /Users/kenh/Documents/583/project03/cpsc583proj1/version05/facts.clp)
 )
 
 (defrule buyGuideStayNearHome
@@ -147,11 +149,16 @@
    (forWork ?fw)
 	(needMoreSpace ?space)
 	(likeLuxury ?luxury)
-	(likeTravel no)
-	(car(year ?year1)(Cname ?Cname1)(likeTravel no))
+	(likeTravel ?travel&no)
+	(car(year ?year1)(Cname ?Cname1)(forWork ?fw1)(needMoreSpace ?space1)(likeLuxury ?luxury1)(likeTravel ?travel1))
+	(test (eq ?fw ?fw1))
+	(test (eq ?space ?space1))
+	(test (eq ?luxury ?luxury1))
+	(test (eq ?travel ?travel1))
+	;(likeTravel no)
+	;(car(year ?year1)(Cname ?Cname1)(likeTravel no))
    =>
-	(printout t ?year1 " " ?Cname1 crlf)
-	(save-facts /Users/kenh/Documents/583/project03/cpsc583proj1/version05/facts.clp)
+	(printout t ?year1 " " ?Cname1 crlf)	
 )
 
 (defrule likeToPackLight
@@ -165,11 +172,15 @@
 	(name ?name)
    (forWork ?fw)
 	(needMoreSpace ?space)
-	(likeToPackLight no)
-	(car(year ?year1)(Cname ?Cname1)(likeToPackLight no))
+	(likeToPackLight ?packLight&no)
+	(car(year ?year1)(Cname ?Cname1)(forWork ?fw1)(needMoreSpace ?space1)(likeToPackLight ?packLight1))
+	(test (eq ?fw ?fw1))
+	(test (eq ?space ?space1))
+	(test (eq ?packLight ?packLight1))
+	;(likeToPackLight no)
+	;(car(year ?year1)(Cname ?Cname1)(likeToPackLight no))
    =>
 	(printout t ?year1 " " ?Cname1 crlf)
-	(save-facts /Users/kenh/Documents/583/project03/cpsc583proj1/version05/facts.clp)
 )
    
 (defrule likeLongDistanceTravel
@@ -185,24 +196,34 @@
 	(name ?name)
    (forWork ?fw)
 	(needMoreSpace ?space)
-	(likeToPackLight ?pklight)
-	(likeLongDistanceTravel yes)
-	(car(year ?year1)(Cname ?Cname1)(likeLongDistanceTravel yes))
+	(likeToPackLight ?packLight)
+	(likeLongDistanceTravel ?lgDistance&yes)
+	(car(year ?year1)(Cname ?Cname1)(forWork ?fw1)(needMoreSpace ?space1)(likeToPackLight ?packLight1)(likeLongDistanceTravel ?lgDistance1))
+	(test (eq ?fw ?fw1))
+	(test (eq ?space ?space1))
+	(test (eq ?packLight ?packLight1))
+	(test (eq ?lgDistance ?lgDistance1))
+	;(likeLongDistanceTravel yes)
+	;(car(year ?year1)(Cname ?Cname1)(likeLongDistanceTravel yes))
    =>
 	(printout t ?year1 " " ?Cname1 crlf)
-	(save-facts /Users/kenh/Documents/583/project03/cpsc583proj1/version05/facts.clp)
 )
 
 (defrule buyGuideForStayNearHome
 	(name ?name)
    (forWork ?fw)
 	(needMoreSpace ?space)
-	(likeToPackLight ?pklight)
-	(likeLongDistanceTravel no)
-	(car(year ?year1)(Cname ?Cname1)(likeLongDistanceTravel no))
+	(likeToPackLight ?packLight)
+	(likeLongDistanceTravel ?lgDistance&no)
+	(car(year ?year1)(Cname ?Cname1)(forWork ?fw1)(needMoreSpace ?space1)(likeToPackLight ?packLight1)(likeLongDistanceTravel ?lgDistance1))
+	(test (eq ?fw ?fw1))
+	(test (eq ?space ?space1))
+	(test (eq ?packLight ?packLight1))
+	(test (eq ?lgDistance ?lgDistance1))
+	;(likeLongDistanceTravel no)
+	;(car(year ?year1)(Cname ?Cname1)(likeLongDistanceTravel no))
    =>
 	(printout t ?year1 " " ?Cname1 crlf)
-	(save-facts /Users/kenh/Documents/583/project03/cpsc583proj1/version05/facts.clp)
 )
 
 (defrule useOwnCarForWork
@@ -234,11 +255,17 @@
    (forWork ?fw)
     (useOwnCarForWork ?owncar)
 	(headToSchool ?school)
-	(mostImportantIs yes)
-	(car(year ?year1)(Cname ?Cname1)(mostImportantIs yes))
+	(mostImportantIs ?important&yes)
+	(car(year ?year1)(Cname ?Cname1)(forWork ?fw1)(useOwnCarForWork ?owncar1)(headToSchool ?school1)(mostImportantIs ?important1))
+	(test (eq ?fw ?fw1))
+	(test (eq ?owncar ?owncar1))
+	(test (eq ?school ?school1))
+	(test (eq ?important ?important1))
+	;(mostImportantIs yes)
+	;(car(year ?year1)(Cname ?Cname1)(mostImportantIs yes))
    =>
 	(printout t ?year1 " " ?Cname1 crlf)
-	(save-facts /Users/kenh/Documents/583/project03/cpsc583proj1/version05/facts.clp)
+
 )
 
 (defrule buyGuideLikeEfficient
@@ -246,11 +273,17 @@
    (forWork ?fw)
     (useOwnCarForWork ?owncar)
 	(headToSchool ?school)
-	(mostImportantIs no)
-	(car(year ?year1)(Cname ?Cname1)(mostImportantIs no))
+	(mostImportantIs ?important&no)
+	(car(year ?year1)(Cname ?Cname1)(forWork ?fw1)(useOwnCarForWork ?owncar1)(headToSchool ?school1)(mostImportantIs ?important1))
+	(test (eq ?fw ?fw1))
+	(test (eq ?owncar ?owncar1))
+	(test (eq ?school ?school1))
+	(test (eq ?important ?important1))
+	;(mostImportantIs no)
+	;(car(year ?year1)(Cname ?Cname1)(mostImportantIs no))
    =>
 	(printout t ?year1 " " ?Cname1 crlf)
-	(save-facts /Users/kenh/Documents/583/project03/cpsc583proj1/version05/facts.clp)
+	
 )
 
 
@@ -268,11 +301,17 @@
    (forWork ?fw)
     (useOwnCarForWork ?owncar)
 	(headToSchool ?school)
-	(style yes)
-	(car(year ?year1)(Cname ?Cname1)(style yes))
+	(style ?Style&yes)
+	(car(year ?year1)(Cname ?Cname1)(forWork ?fw1)(useOwnCarForWork ?owncar1)(headToSchool ?school1)(style ?Style1))
+	(test (eq ?fw ?fw1))
+	(test (eq ?owncar ?owncar1))
+	(test (eq ?school ?school1))
+	(test (eq ?Style ?Style1))
+	;(style yes)
+	;(car(year ?year1)(Cname ?Cname1)(style yes))
    =>
 	(printout t ?year1 " " ?Cname1 crlf)
-	(save-facts /Users/kenh/Documents/583/project03/cpsc583proj1/version05/facts.clp)
+	
 )
 
 (defrule buyGuideLikeCreative
@@ -280,11 +319,17 @@
    (forWork ?fw)
     (useOwnCarForWork ?owncar)
 	(headToSchool ?school)
-	(style no)
-	(car(year ?year1)(Cname ?Cname1)(style no))
+	(style ?Style&no)
+	(car(year ?year1)(Cname ?Cname1)(forWork ?fw1)(useOwnCarForWork ?owncar1)(headToSchool ?school1)(style ?Style1))
+	(test (eq ?fw ?fw1))
+	(test (eq ?owncar ?owncar1))
+	(test (eq ?school ?school1))
+	(test (eq ?Style ?Style1))
+	;(style no)
+	;(car(year ?year1)(Cname ?Cname1)(style no))
    =>
 	(printout t ?year1 " " ?Cname1 crlf)
-	(save-facts /Users/kenh/Documents/583/project03/cpsc583proj1/version05/facts.clp)
+
 )
 
 (defrule needTowing
@@ -310,11 +355,17 @@
    (forWork ?fw)
     (useOwnCarForWork ?owncar)
 	(needTowing ?towing)
-	(need yes)
-	(car(year ?year1)(Cname ?Cname1)(need yes))
+	(need ?Need&yes)
+	(car(year ?year1)(Cname ?Cname1)(forWork ?fw1)(useOwnCarForWork ?owncar1)(needTowing ?towing1)(need ?Need1))
+	(test (eq ?fw ?fw1))
+	(test (eq ?owncar ?owncar1))
+	(test (eq ?towing ?towing1))
+	(test (eq ?Need ?Need1))
+	;(need yes)
+	;(car(year ?year1)(Cname ?Cname1)(need yes))
    =>
 	(printout t ?year1 " " ?Cname1 crlf)
-	(save-facts /Users/kenh/Documents/583/project03/cpsc583proj1/version05/facts.clp)
+	
 )
 
 (defrule buyGuideNeedSpace
@@ -322,25 +373,50 @@
    (forWork ?fw)
     (useOwnCarForWork ?owncar)
 	(needTowing ?towing)
-	(need no)
-	(car(year ?year1)(Cname ?Cname1)(need no))
+	(need ?Need&no)
+	(car(year ?year1)(Cname ?Cname1)(forWork ?fw1)(useOwnCarForWork ?owncar1)(needTowing ?towing1)(need ?Need1))
+	(test (eq ?fw ?fw1))
+	(test (eq ?owncar ?owncar1))
+	(test (eq ?towing ?towing1))
+	(test (eq ?Need ?Need1))
+	;(need no)
+	;(car(year ?year1)(Cname ?Cname1)(need no))
    =>
 	(printout t ?year1 " " ?Cname1 crlf)
-	(save-facts /Users/kenh/Documents/583/project03/cpsc583proj1/version05/facts.clp)
+
 )
 
 (defrule needPower
 	(name ?name)
    (forWork ?fw)
     (useOwnCarForWork ?owncar)
-    (needTowing no)
-    (car(year ?year1)(Cname ?Cname1)(needTowing no))
+    (needTowing ?towing&no)
+    (car(year ?year1)(Cname ?Cname1)(forWork ?fw1)(useOwnCarForWork ?owncar1)(needTowing ?towing1))
+    	(test (eq ?fw ?fw1))
+	(test (eq ?owncar ?owncar1))
+	(test (eq ?towing ?towing1))
+    ;(needTowing no)
+    ;(car(year ?year1)(Cname ?Cname1)(needTowing no))
    =>
 	(printout t ?year1 " " ?Cname1 crlf)
-	(save-facts /Users/kenh/Documents/583/project03/cpsc583proj1/version05/facts.clp)
+	
 )
 
-   
+
+(defrule getInput
+	?f <- (getNextInput)
+	=>
+	(printout t "Input 'end' to leave this game? >> ")
+	(bind ?input(readline))
+	(if (neq ?input "end")
+		then
+		(retract ?f)
+		(reset)
+		(load /Users/kenh/Documents/583/project03/cpsc583proj1/version05/data5.clp)
+		(load /Users/kenh/Documents/583/project03/cpsc583proj1/version05/main5.clp)
+		(assert (getNextInput))
+		(assert (user-input ?input)))
+)   
    
       
   
