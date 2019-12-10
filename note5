@@ -1,3 +1,7 @@
+ ;How to execuite the program
+ ;1. change the directory path in these files script5.clp and note5.txt
+ ;2. copy the directory path in note5.txt 
+ ;3. paste the directory path at clips and run the program
 
 (batch /Users/kenh/Documents/583/project03/cpsc583proj1/version05/script5.clp)
 

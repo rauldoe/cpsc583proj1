@@ -12,7 +12,12 @@
  ;
  ;Name of this program: main5.clp
  ;Purpose of this file:
- ;1. build up rules and functions to run the application 
+ ;1. build up rules and functions to run the application
+ ;
+ ;How to execuite the program
+ ;1. change the directory path in these files script5.clp and note5.txt
+ ;2. copy the directory path in note5.txt 
+ ;3. paste the directory path at clips and run the program
  
  
  

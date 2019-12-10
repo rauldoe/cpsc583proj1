@@ -13,6 +13,11 @@
  ;Name of this program: data5.clp
  ;Purpose of this file:
  ;1. build up full set of data and data structure
+ ;
+ ;How to execuite the program
+ ;1. change the directory path in these files script5.clp and note5.txt
+ ;2. copy the directory path in note5.txt 
+ ;3. paste the directory path at clips and run the program
 
 
 ;create a template for question
