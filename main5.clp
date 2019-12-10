@@ -74,7 +74,7 @@
    (not (name ?))
    (quest (no bye)(question ?question1))	
    =>
- 	(assert (bye (displayInfor ?question1)))	
+ 	(assert (bye (displayInfor ?question1)))
 )
 
 ;build a rule to ask if user is a communter
@@ -301,7 +301,7 @@
 	(printout t ?year1 " " ?Cname1 crlf)
 )
 
-;generate recommendation for students who drive own cars to school daily and need extra features likeefficient 
+;generate recommendation for students who drive own cars to school daily and need extra features like efficient 
 (defrule buyGuideLikeEfficient
 	(name ?name)
    (forWork ?fw)
@@ -432,14 +432,16 @@
 	=>
 	(printout t "Input 'end' to leave this game? >> ")
 	(bind ?input(readline))
+	(clear-window)
 	(if (neq ?input "end")
 		then
 		(retract ?f)
 		(reset)
-		(load /Users/kenh/Documents/583/project03/cpsc583proj1/version05/data5.clp)
-		(load /Users/kenh/Documents/583/project03/cpsc583proj1/version05/main5.clp)
+		(run)
 		(assert (getNextInput))
 		(assert (user-input ?input)))
+
+
 )   
    
       
